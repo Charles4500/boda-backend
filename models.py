@@ -49,3 +49,13 @@ class Lawyer(db.Model, SerializerMixin):
     password = db.Column(db.Text, nullable=False)
     degree = db.Column(db.Text, nullable=False)
     residence =db.Column(db.Text,nullable=False)
+
+class Payment(db.Model,SerializerMixin):
+
+      #Modeling the the payment
+      __tablename__ = 'payments'
+      
+      id = db.Column(db.Integer,primary_key=True)
+      amount = db.Column(db.Integer,nullable=False)
+      date = db.Column(db.TIMESTAMP)
+
