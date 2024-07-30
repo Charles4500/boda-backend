@@ -2,7 +2,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from sqlalchemy_serializer import SerializerMixin
-
+from flask_bcrypt import check_password_hash
 
 convention = {
     "ix": 'ix_%(column_0_label)s',
@@ -35,6 +35,9 @@ class Rider(db.Model, SerializerMixin):
     insurance = db.Column(db.Text, nullable=False, unique=True)
     residence = db.Column(db.Text, nullable=False)
 
+    
+    def check_password(self, plain_password):
+        return check_password_hash(self.password, plain_password)
 
 class Lawyer(db.Model, SerializerMixin):
 
@@ -49,6 +52,9 @@ class Lawyer(db.Model, SerializerMixin):
     password = db.Column(db.Text, nullable=False)
     degree = db.Column(db.Text, nullable=False)
     residence =db.Column(db.Text,nullable=False)
+    
+    def check_password(self, plain_password):
+        return check_password_hash(self.password, plain_password)
 
 class Payment(db.Model,SerializerMixin):
 
