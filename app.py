@@ -22,11 +22,6 @@ db.init_app(app)
 
 bcrypt = Bcrypt(app)
 
-
-# Set up of views
-
-# api.add_resource(Register, '/register')
-# api.add_resource(Login, '/login')
 @app.route('/')
 def home():
     return '<h1>Hey from flask</h1>'
